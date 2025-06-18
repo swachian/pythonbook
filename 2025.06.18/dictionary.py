@@ -18,4 +18,6 @@ person = {
     'city': "Cobenhagen"
     }
 
-print(person)
+# print(person.items())
+for key, value in person.items():
+    print(f"{key} : {value}")
