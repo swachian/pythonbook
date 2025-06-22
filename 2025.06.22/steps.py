@@ -3,16 +3,16 @@ class Solution:
         pass
 
     def climb_stairs(self, n):
-        count = 0
-        if n <= 0:
-            return 0
-        if n == 1:
-            return 1
-        if n == 2:
-            return 2
-        count += self.climb_stairs(n - 2)
-        count += self.climb_stairs(n-1)
-        return count
+        results = [0]
+        for i in range(1, n+1):
+            if i == 1:
+                results.append(1)
+            elif i == 2:
+                results.append(2)
+            else:
+                results.append(results[i-2] + results[i-1])
+        return results[-1]
+
 
 solution = Solution()
 print(solution.climb_stairs(2))
