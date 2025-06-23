@@ -7,7 +7,7 @@ class TreeNode:
 class Solution:
     def isValidBST(self, root):
         try:
-            self.traverse(root)
+            self.traverse2(root)
         except:
             return False
         return True
@@ -24,6 +24,25 @@ class Solution:
             raise Exception()
         result += result_right
         return result
+    
+    def traverse2(self, node):
+        nodes = []
+        result = []
+        current = node
+        while current or nodes:
+            while current:
+                nodes.append(current)
+                current = current.left
+            
+            current = nodes.pop()
+            if len(result) > 0 and result[-1] >= current.val:
+                raise Exception()
+            result.append(current.val)
+
+            current = current.right
+        return result
+
+
 
 def make_tree_node(list, node):
     if not node:
@@ -64,5 +83,8 @@ print(solution.isValidBST(root))
 root = make_tree_node([2, 2, 2], None)
 print(solution.isValidBST(root))
 
-root = make_tree_node([5,4,6,None,None,3,7], None)
-print(solution.isValidBST(root))
+# root = make_tree_node([5,4,6,None,None,3,7], None)
+# print(solution.traverse2(root))
+
+root = make_tree_node([2,1,3], None)
+print(solution.traverse2(root))
