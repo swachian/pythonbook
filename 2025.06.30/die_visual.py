@@ -21,12 +21,7 @@ class Dies:
         return range(1, self.max_results() + 1)
 
     def frequencies(self):
-        frequencies = []
-        for value in self.poss_results():
-            frequency = self.results.count(value)
-            frequencies.append(frequency)
-
-        return frequencies
+        return [self.results.count(value) for value in self.poss_results()]
 
 dies = Dies()
 dies.add_dice(6)
